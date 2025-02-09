@@ -32,4 +32,4 @@ const fetchSouravProfile = async () => {
   return jsonResponse;
 };
 
-fetchWithAutoRetry(fetchSouravProfile, 5);
+// fetchWithAutoRetry(fetchSouravProfile, 5);
