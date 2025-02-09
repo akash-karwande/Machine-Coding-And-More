@@ -9,4 +9,6 @@ function sum(a) {
 
 let res = sum(3)(2)(4)();
 
-console.log(res)
+// console.log(res)
+  
+  console.log(compute(1,1,1))
