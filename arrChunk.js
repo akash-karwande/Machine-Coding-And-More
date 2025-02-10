@@ -9,4 +9,4 @@ function arrChunk (arr, size) {
     }
     return result
 }
-console.log(arrChunk([1,2,3],2))
+// console.log(arrChunk([1,2,3],2))
