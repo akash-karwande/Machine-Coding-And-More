@@ -56,4 +56,4 @@ Array.prototype.myReduce = function (cd, initialVal) {
 let sumArr = numArr.myReduce((acc, num, i, arr) => {
   return (acc += num);
 }, 0);
-console.log(sumArr);
+// console.log(sumArr);
