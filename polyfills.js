@@ -57,3 +57,62 @@ let sumArr = numArr.myReduce((acc, num, i, arr) => {
   return (acc += num);
 }, 0);
 // console.log(sumArr);
+
+// call polyfill
+
+let obj1 = {
+    name: 'Akash',
+    printName: function(last, city){
+        // console.log(last)
+        return this.name + ' ' + last + ' from ' + city
+    }
+}
+
+let obj2 = {
+    name: 'Ridu',
+    printName: function(last, city){
+        // console.log(last)
+        return this.name + ' ' + last + ' from ' + city
+    }
+}
+
+Function.prototype.myCall = function(obj={}, ...args) {
+    if(typeof this !== 'function') {
+        throw new Error(`${this} is not callable`);
+    }
+    obj.fn = this;
+    obj.fn(...args);
+}
+
+// obj1.printName.call(obj2, 'Karwande', 'basmat')
+// obj1.printName.myCall(obj2, 'Karwande', 'basmat')
+
+// apply polyfill
+
+Function.prototype.myApply = function(obj={}, args=[]) {
+    if(typeof this !== 'function') {
+        throw new Error(`${this} is not callable`);
+    }
+
+   if(!Array.isArray(args)) {
+    throw new Error(this, 'args should be array')
+   }
+    obj.fn = this;
+    obj.fn(...args);
+}
+// obj1.printName.myApply(obj2, ['Karwande', 'basmat'])
+
+// bind polyfill
+
+Function.prototype.myBind = function(obj={}, ...args) {
+    if(typeof this !== 'function') {
+        throw new Error(`${this} is not callable`);
+    }
+    obj.fn = this;
+   return function(...nextArgs) {
+    return obj.fn(...args, ...nextArgs)
+   }
+}
+
+let resultFn = obj1.printName.myBind(obj2, 'Karwande', 'basmat');
+console.log('118',resultFn())
